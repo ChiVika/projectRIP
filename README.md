@@ -1,6 +1,6 @@
 <h2>Для работы с сервером:</h2>
 <ul>
-  <li>Для запуска: <br> python manage.py runserver</li> <br> <br>
+  <li>Для запуска: <br> <u>python manage.py runserver</u></li> <br> <br>
   <li>Для миграций: <br> 
     python manage.py makemigrations <br>
     python manage.py migrate <br> 
