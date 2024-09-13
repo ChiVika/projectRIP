@@ -6,5 +6,5 @@ from rest_framework.decorators import api_view
 @api_view(['GET'])
 def getRoutes(req):
     
-    return Response("Our API")
+    return Response("Our APIs")
 
