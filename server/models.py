@@ -1,4 +1,5 @@
 from django.db import models
+from rest_framework import serializers
 
 class Proba1(models.Model):
     update = models.DateTimeField(auto_now=True)
@@ -8,4 +9,6 @@ class Proba1(models.Model):
     def __str__(self):
         return self.body[0:50]
 
-# Create your models here.
+
+
+
