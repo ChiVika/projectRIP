@@ -1,3 +1,13 @@
+<h2>Для работы с клиентом:</h2>
+<ul>
+  <span>cd client</span> <br>
+  <span>npm install</span> <br>
+  <span>npm run dev</span><br>
+  
+</ul>
+
+
+
 <h2>Для работы с сервером:</h2>
 <ul>
   <li>Для запуска: <br> <u>python manage.py runserver</u></li> <br> <br>
