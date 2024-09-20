@@ -3,13 +3,24 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .models import Proba1
+from ..models import Proba1
 
 
 @api_view(['GET'])
 def getRoutes(req):
+    data = [
+        {
+            'id': proba1.id,
+            'body': proba1.body,
+            'created': proba1.created.isoformat(),
+            'updated': proba1.update.isoformat(),
+        }
+        for proba1 in Proba1.objects.all().order_by('-created')
+    ]
     
-    return Response("Our APIs")
+    return Response(data)
+
+
 
 def proba1_list(request):
     data = [
