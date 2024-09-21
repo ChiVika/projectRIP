@@ -9,6 +9,10 @@ class Proba1(models.Model):
     def __str__(self):
         return self.body[0:50]
 
+class RecipePost(models.Model):
+    title = models.TextField(max_length=200)
+    description = models.TextField(blank=True)
+    create_date = models.DateTimeField(auto_now_add=True)
 
 
 

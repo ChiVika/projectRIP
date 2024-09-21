@@ -5,7 +5,7 @@ function App() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/proba/')
+    axios.get('http://127.0.0.1:8000/api/')
       .then(response => {
         setData(response.data);
       })
@@ -18,8 +18,8 @@ function App() {
     <div>
       {data.map(item => (
         <div key={item.id}>
-          <h2>{item.body}</h2>
-          <p>Created: {new Date(item.created).toLocaleString()}</p>
+          <h2>{item.title}</h2>
+          <p>{item.description}</p>
         </div>
       ))}
     </div>
