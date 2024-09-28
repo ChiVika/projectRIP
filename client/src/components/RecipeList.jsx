@@ -1,20 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-function RecipeList({ recipes }) {
+const RecipeList = ({ recipes }) => {
+  // Ensure recipes is an array
+  const recipeArray = recipes || [];
+
   return (
     <div>
-      <h2>Recipes</h2>
-      <ul>
-        {recipes.map(recipe => (
-          <li key={recipe.id}>
-            <Link to={`/recipe/${recipe.id}`}>{recipe.title}</Link>
-            <p>{recipe.description}</p>
-          </li>
-        ))}
-      </ul>
+      {recipeArray.map((recipe, index) => (
+        <div key={index}>
+          <h2>{recipe.name}</h2>
+          <p>{recipe.description}</p>
+          {/* Add more recipe details as needed */}
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default RecipeList;
