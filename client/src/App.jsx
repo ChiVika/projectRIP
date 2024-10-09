@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './pages/Home';
+import About from './pages/About';
+import RecipeDetail from './components/RecipeDetail';
+import RecipeList from './components/RecipeList'; // Импортируем RecipeList
+import './App.css';
 
 function App() {
   const [data, setData] = useState([]);
@@ -15,14 +23,14 @@ function App() {
   }, []);
 
   return (
-    <div>
-      {data.map(item => (
-        <div key={item.id}>
-          <h2>{item.title}</h2>
-          <p>{item.description}</p>
-        </div>
-      ))}
-    </div>
+      <BrowserRouter>
+      <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
   );
 }
 
