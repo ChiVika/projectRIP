@@ -29,6 +29,15 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
         </Routes>
+        <div>
+          {data.map(item => (
+            <div>
+              <h4>{item.title}</h4>
+              <p>{item.description}</p>
+            </div>
+          ))}
+
+        </div>
         <Footer />
       </BrowserRouter>
   );
