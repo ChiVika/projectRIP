@@ -7,3 +7,4 @@ class PostSerializers(serializers.ModelSerializer):
     class Meta:
         model = RecipePost
         fields = "__all__"
+
