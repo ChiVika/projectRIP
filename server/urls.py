@@ -4,6 +4,7 @@ from django.urls import include
 from rest_framework.routers import DefaultRouter
 from django.conf import settings
 from django.conf.urls.static import static
+from .views.auth import *
 
 router = DefaultRouter()
 router.register('', PostDatas)
@@ -11,5 +12,9 @@ router.register('', PostDatas)
 urlpatterns = [
     path("api/", PostsViews.as_view(), name="API"),
     path("api/<int:ids>/", PostViewsId.as_view(), name="detail_API"),
-    path("api/blog/", include(router.urls))
+    path("api/blog/", include(router.urls)),
+    path("register/", Register.as_view(), name='register'),
+    path("login/", LoginView.as_view(), name='login'),
+    path('user/', UserView.as_view(), name='user'),
+    path('logout/', LogoutView.as_view(), name='logout')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
