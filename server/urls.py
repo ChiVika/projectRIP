@@ -13,8 +13,8 @@ urlpatterns = [
     path("api/", PostsViews.as_view(), name="API"),
     path("api/<int:ids>/", PostViewsId.as_view(), name="detail_API"),
     path("api/blog/", include(router.urls)),
-    path("register/", Register.as_view(), name='register'),
-    path("login/", LoginView.as_view(), name='login'),
-    path('user/', UserView.as_view(), name='user'),
-    path('logout/', LogoutView.as_view(), name='logout')
+    path("api/register/", Register.as_view(), name='register'),
+    path("api/login/", LoginView.as_view(), name='login'),
+    path('api/user/', UserView.as_view(), name='user'),
+    path('api/logout/', LogoutView.as_view(), name='logout')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
