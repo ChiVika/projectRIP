@@ -82,13 +82,17 @@ TEMPLATES = [
     },
 ]
 
+
 CHANNEL_LAYERS = {
      "default": {
-         "BACKEND": "channels_redis.core.RedisChannelLayer",
-         "CONFIG": {
-             "hosts": [("localhost", 6379)],
-         },
+         'BACKEND': 'channels.layers.InMemoryChannelLayer',
      },
+    # "default": {
+    #     "BACKEND": "channels_redis.core.RedisChannelLayer",
+    #     "CONFIG": {
+    #         "hosts": [("127.0.0.1", 6379)],
+    #     },
+    # },
 }
 
 
@@ -142,7 +146,8 @@ MEDIA_URL = 'media/'
 DEFAULT_FILE_OPTIONS = {
     'upload_to': 'static/'
 }
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
