@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-rou
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import PostForm from './components/PostForm';
+
 import About from './pages/About';
 import RecipeDetail from './components/RecipeDetail';
 import RecipeList from './components/RecipeList'; // Импортируем RecipeList
@@ -28,8 +30,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/posts" element={<RecipeList />} />
+          <Route path="/create-post" element={<PostForm />} />
         </Routes>
-        <div>
+        {/* <div>
           {data.map(item => (
             <div>
               <h4>{item.title}</h4>
@@ -37,7 +41,7 @@ function App() {
             </div>
           ))}
 
-        </div>
+        </div> */}
         <Footer />
       </BrowserRouter>
   );
