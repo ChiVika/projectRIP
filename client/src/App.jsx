@@ -40,9 +40,9 @@ function App() {
       <Header user={user}/>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/chat" element={<About />} />
           <Route path="/posts" element={<RecipeList />} />
-          <Route path="/create-post" element={<PostForm />} />
+          <Route path="/create-post" element={<PostForm user={user}/>} />
           <Route path="/auth" element={<Auth />} />
           <Route path='/profile' element={<Profile/>}/>;
         </Routes>
