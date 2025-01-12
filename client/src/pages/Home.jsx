@@ -3,7 +3,7 @@ import RecipeList from '../components/RecipeList';
 
 function Home({ data }) {
   return (
-    <div>
+    <div style={{width: "1400px"}}>
       <h1>Главная страница</h1>
       <RecipeList recipes={data} />
     </div>
