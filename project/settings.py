@@ -25,12 +25,14 @@ SECRET_KEY = 'django-insecure-r!&$9&7w15o7)*+uol4ure^nn4p)nzstfd^i&p_q6fj4yjy%rp
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
+    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,6 +44,7 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'corsheaders',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,10 @@ MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     
 ]
+
+ASGI_APPLICATION = 'project.asgi.application'
+WSGI_APPLICATION = 'project.wsgi.application'
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 ROOT_URLCONF = 'project.urls'
@@ -75,7 +82,18 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'project.wsgi.application'
+
+CHANNEL_LAYERS = {
+    #  "default": {
+    #      'BACKEND': 'channels.layers.InMemoryChannelLayer',
+    #  },
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("redis", 6379)],
+        },
+    },
+}
 
 
 # Database
@@ -128,7 +146,8 @@ MEDIA_URL = 'media/'
 DEFAULT_FILE_OPTIONS = {
     'upload_to': 'static/'
 }
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 

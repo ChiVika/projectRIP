@@ -16,4 +16,12 @@ class RecipePost(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     
 
+class User(models.Model):
+    username = models.TextField(max_length=200)
+    email = models.CharField(max_length=200, unique=True)
+    password = models.CharField(max_length=100)
+
+    def check_password(self, raw_password):
+        return self.password == raw_password    
+
 
