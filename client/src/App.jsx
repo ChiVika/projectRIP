@@ -4,30 +4,47 @@ import { BrowserRouter as Router, Route, Routes, BrowserRouter } from 'react-rou
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import PostForm from './components/PostForm';
+
 import About from './pages/About';
 import RecipeDetail from './components/RecipeDetail';
 import RecipeList from './components/RecipeList'; // Импортируем RecipeList
 import './App.css';
+import Auth from './pages/Auth';
+import Profile from './pages/profile';
 
 function App() {
-  const [data, setData] = useState([]);
 
+  const [user, setUser] = useState('');
   useEffect(() => {
-    axios.get('http://127.0.0.1:8000/api/')
-      .then(response => {
-        setData(response.data);
-      })
-      .catch(error => {
-        console.error('Error fetching data:', error);
-      });
+    (
+      async () => {
+          const response = await fetch('http://127.0.0.1:8000/api/user/', {
+            method: "GET",
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            credentials: 'include',
+          });
+          const content = await response.json();
+          console.log(content)
+          setUser(content);
+          localStorage.setItem('userId', content.id)
+      }
+    )();
+    
   }, []);
 
   return (
       <BrowserRouter>
-      <Header />
+      <Header user={user}/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
+          <Route path="/posts" element={<RecipeList />} />
+          <Route path="/create-post" element={<PostForm />} />
+          <Route path="/auth" element={<Auth />} />
+          <Route path='/profile' element={<Profile/>}/>;
         </Routes>
         <Footer />
       </BrowserRouter>

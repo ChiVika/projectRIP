@@ -1,0 +1,15 @@
+.PostList__img{
+    width: 300px;
+    height: 200px;
+}
+.PostList__container{
+    width: 300px;
+    background-color: #333;
+    height: 350px;
+}
+.PostList{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 50px;
+}
