@@ -3,8 +3,8 @@ import React from 'react';
 function About() {
   return (
     <div>
-      <h1>About Us</h1>
-      <p>This is a blog about recipes.</p>
+      <h1>О нас</h1>
+      <p>Тут будет классная инфа</p>
     </div>
   );
 }

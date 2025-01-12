@@ -9,11 +9,7 @@ from rest_framework import serializers
 #     def __str__(self):
 #         return self.body[0:50]
 
-class RecipePost(models.Model):
-    title = models.TextField(max_length=200)
-    images = models.ImageField(upload_to="server/static/images",blank=True)
-    description = models.TextField(blank=True)
-    create_date = models.DateTimeField(auto_now_add=True)
+
     
 
 class User(models.Model):
@@ -23,5 +19,12 @@ class User(models.Model):
 
     def check_password(self, raw_password):
         return self.password == raw_password    
+    
+class RecipePost(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    title = models.TextField(max_length=200)
+    images = models.ImageField(upload_to="server/static/images",blank=True)
+    description = models.TextField(blank=True)
+    create_date = models.DateTimeField(auto_now_add=True)
 
 
