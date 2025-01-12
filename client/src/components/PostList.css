@@ -13,3 +13,16 @@
     flex-wrap: wrap;
     gap: 50px;
 }
+.PostList__Add-title{
+    width: 1440px;
+}
+.PostList__Add-container{
+    position: relative;
+    margin-bottom: 50px;
+
+}
+.PostList__Add{
+    position: absolute;
+    top: 50px;
+    right: 15px;
+}

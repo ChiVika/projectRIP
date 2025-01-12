@@ -4,8 +4,9 @@ from rest_framework.decorators import api_view
 from rest_framework import serializers, viewsets, permissions
 from rest_framework.views import APIView
 from ..serializers import PostSerializers
-
-from ..models import RecipePost
+from rest_framework.exceptions import AuthenticationFailed
+from ..models import RecipePost, User
+import jwt, datetime
 
 
 
@@ -18,7 +19,28 @@ class PostsViews(APIView):
         return Response(serializers.data)
     
     def post(self,request):
-        serializer = PostSerializers(data=request.data)
+        token = request.COOKIES.get('jwt')
+        if not token:
+            raise AuthenticationFailed('Не аутентифицирован!')
+
+        try:
+            payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Токен истек!')
+
+        user = User.objects.filter(id=payload['id']).first()
+        if user is None:
+            raise AuthenticationFailed('Пользователь не найден')
+        image = request.FILES.get('image')
+
+        Posts = RecipePost.objects.create(
+            user=user,
+            title=request.data.get('title'),
+            description=request.data.get('description'),
+            images=image
+        )
+
+        serializer = PostSerializers(Posts, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
@@ -48,6 +70,24 @@ class PostViewsId(APIView):
             return Response({"detail": "Not found."}, status=404)
         data.delete()
         return Response(status=200)
+
+class PostViewsAllUser(APIView):
+    def get(self, request):
+        token = request.COOKIES.get('jwt')
+        if not token:
+            raise AuthenticationFailed('Не аутентифицирован!')
+
+        try:
+            payload = jwt.decode(token, 'secret', algorithms=['HS256'])
+        except jwt.ExpiredSignatureError:
+            raise AuthenticationFailed('Токен истек!')
+
+        user = User.objects.filter(id=payload['id']).first()
+        if user is None:
+            raise AuthenticationFailed('Пользователь не найден')
+        data = RecipePost.objects.filter(user_id=user)
+        serializers = PostSerializers(data, many=True)
+        return Response(serializers.data)
 
 
 class PostDatas(viewsets.ModelViewSet):
