@@ -11,8 +11,8 @@ body {
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
-  
   min-height: 100vh;
+  margin-bottom: 50px;
 }
 
 header{
@@ -23,6 +23,7 @@ header{
   width: 100%;
   box-sizing: border-box;
   margin: 0;
+  
 }
 
 footer {

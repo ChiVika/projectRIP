@@ -30,6 +30,7 @@
     width: 300px;
     height: 300px;
     z-index: 5;
+    
 }
 .AddWork__form{
     display: flex;
@@ -50,8 +51,16 @@
     text-align: center;
     margin-bottom: 20px;
     resize: none;
+
 }
 .AddWork__input:focus{
     outline: none;
 }
 
+.PostList__title{
+    color: #EAE6DB;
+}
+
+.PostList__desc{
+    color: #EAE6DB;
+}

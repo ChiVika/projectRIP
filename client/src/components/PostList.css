@@ -2,11 +2,15 @@
     width: 300px;
     height: 300px;
     object-fit: cover;
+    border-top-left-radius: 5%;
+    border-top-right-radius: 5%;
 }
 .PostList__container{
     width: 300px;
-    background-color: #333;
+    background-color: #BAA791;
     height: 450px;
+    border-radius: 5%;
+    margin-bottom: 50px;
 }
 .PostList{
     display: flex;
@@ -16,6 +20,7 @@
 }
 .PostList__Add-title{
     width: 1440px;
+    
 }
 .PostList__Add-container{
     position: relative;
