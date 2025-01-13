@@ -78,7 +78,7 @@ function EditPost({ user }) {
 
     return (
         <div className="EditWork">
-            <h1 className="EditWork__title">Редактирование работы</h1>
+            <h1 className="EditWork__title">Редактирование поста</h1>
             <div className="EditWork__container">
                 <form className="EditWork__form" onSubmit={handleSubmit}>
                     <div className="EditWork__img">
