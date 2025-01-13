@@ -8,7 +8,7 @@ function Header({user}) {
       <nav className='header__nav'>
         <ul className='header__container'>
           <li><Link to="/">Главная</Link></li>
-          <li><Link to="/about">О нас</Link></li>
+          <li><Link to="/chat">Общий чат</Link></li>
           {(user.detail === 'Не аунтифицирован!' || user.detail === "Пользователь не найден") 
           ? (<Link to="/auth" className='header__button'>Войти</Link>) :
           (<Link to="/profile" className='header__button'>{user.username}</Link>)}

@@ -1,10 +1,10 @@
 import React from 'react';
+import ChatRoom from '../components/RoomChat';
 
 function About() {
   return (
     <div>
-      <h1>О нас</h1>
-      <p>Тут будет классная инфа</p>
+      <ChatRoom/>
     </div>
   );
 }
