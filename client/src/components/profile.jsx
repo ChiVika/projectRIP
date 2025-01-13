@@ -2,10 +2,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import "./PostList.css";
 
 function MyProfile({user}) {
     const [posts, setPosts] = useState([]);
+    
     useEffect(() => {
           axios.get('http://127.0.0.1:8000/api/posts/user/', {
             withCredentials: true,
@@ -18,6 +20,22 @@ function MyProfile({user}) {
               console.error('Error fetching posts:', error);
             });
       }, []);
+    
+      const deletePost = async(id) => {
+        try{
+          const response = await axios.delete(`http://127.0.0.1:8000/api/${id}/`, { 
+            withCredentials: true
+          });
+          setPosts(posts.filter(post => post.id !== id));
+        }
+        catch (error) {
+          console.error('Проблемы с удалением', error);
+      }
+      }
+      const navigate = useNavigate();
+      const navigateEdit = (id) => {
+        navigate(`/editPost/${id}/`);
+    }
     return (
         <>
         <div className='PostList__Add-container'>
@@ -34,10 +52,8 @@ function MyProfile({user}) {
                       <h3 className='PostList__title'>{item.title}</h3>
                       <p className='PostList__desc'>{item.description}</p>
                   </div>
-                  <Link to="/editPost/">
-                      <button>Редактировать</button>
-                  </Link>
-                  <button>Удалить</button>
+                  <button onClick={() => navigateEdit(item.id)}>Редактировать</button>
+                  <button onClick={() => deletePost(item.id)}>Удалить</button>
                 </div>
             ))}
         </div>
