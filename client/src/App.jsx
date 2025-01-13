@@ -12,6 +12,7 @@ import RecipeList from './components/RecipeList'; // Импортируем Reci
 import './App.css';
 import Auth from './pages/Auth';
 import Profile from './pages/profile';
+import EditPost from './components/EditPost';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
           <Route path="/create-post" element={<PostForm user={user}/>} />
           <Route path="/auth" element={<Auth />} />
           <Route path='/profile' element={<Profile/>}/>;
+          <Route path='/editPost/:ids/' element={<EditPost user={user}/>}/>
         </Routes>
         <Footer />
       </BrowserRouter>
