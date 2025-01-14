@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import './Auth.css'; 
 
 function Auth() {
   const [email, setEmail] = useState("");
@@ -13,10 +14,10 @@ function Auth() {
   const submitForm = async (e) => {
     e.preventDefault();
 
-    try{
-      await fetch('http://127.0.0.1:8000/api/login/',{
+    try {
+      await fetch('http://127.0.0.1:8000/api/login/', {
         method: "POST",
-        headers:{
+        headers: {
           'Content-Type': 'application/json'
         },
         credentials: 'include',
@@ -24,49 +25,37 @@ function Auth() {
         body: JSON.stringify({
           email, password
         })
-          
       })
       .then(response => {
-        if(response.ok){
+        if (response.ok) {
           console.log("авторизация прошла успешно");
           navigate('/');
           window.location.reload();
-        }
-        else{
+        } else {
           console.log('Ошибка авторизации');
         }
-
-      })
-      
-    }
-    catch(error){
+      });
+    } catch (error) {
       console.error(error);
       console.log('Ошибка авторизации');
     }
-    
-
-  }
+  };
 
   return (
-    <>
-      <div className="Auth" onSubmit={submitForm}>
-        
-          <form className="Auth__block">
-            <h2 className="Auth__title">Авторизация</h2>
-            <div className="Auth__content">
-              <input type="email" className="Auth__input" placeholder="Email"
-                onChange={e => setEmail(e.target.value)} required/>
-              <input type="password" className="Auth__input" placeholder="password"
-                onChange={e => setPassword(e.target.value)} required/>
-            </div>
-            <Link to="/registration" className="Auth__link">Зарегистрироваться</Link>
-            <button type="submit" className="Auth__btn">вход</button>
-            
-          </form>
+    <div className="Auth">
+      <form className="Auth__block" onSubmit={submitForm}>
+        <h2 className="Auth__title">Авторизация</h2>
+        <div className="Auth__content">
+          <input type="email" className="Auth__input" placeholder="Email"
+            onChange={e => setEmail(e.target.value)} required />
+          <input type="password" className="Auth__input" placeholder="Password"
+            onChange={e => setPassword(e.target.value)} required />
         </div>
-      
-    </>
-  )
+        <Link to="/registration" className="Auth__link">Зарегистрироваться</Link>
+        <button type="submit" className="Auth__btn">Вход</button>
+      </form>
+    </div>
+  );
 }
 
-export default Auth
+export default Auth;

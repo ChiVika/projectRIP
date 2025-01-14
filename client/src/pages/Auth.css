@@ -1,0 +1,64 @@
+.Auth {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #f0f0f0; */
+    font-family: Arial, sans-serif;
+  }
+  
+  .Auth__block {
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    padding: 70px; /* Увеличенный отступ */
+    width: 400px; /* Увеличенная ширина */
+    text-align: center;
+  }
+  
+  .Auth__title {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .Auth__content {
+    margin-bottom: 20px;
+  }
+  
+  .Auth__input {
+    width: calc(100% - 22px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .Auth__link {
+    display: block;
+    margin-bottom: 20px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .Auth__link:hover {
+    text-decoration: underline;
+  }
+  
+  .Auth__btn {
+    background-color: #909090;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .Auth__btn:hover {
+    background-color: #333;
+  }
+  
