@@ -13,6 +13,8 @@ import './App.css';
 import Auth from './pages/Auth';
 import Profile from './pages/profile';
 import EditPost from './components/EditPost';
+import Register from './pages/Register'; 
+
 
 function App() {
 
@@ -46,6 +48,8 @@ function App() {
           <Route path="/create-post" element={<PostForm user={user}/>} />
           <Route path="/auth" element={<Auth />} />
           <Route path='/profile' element={<Profile/>}/>;
+          <Route path="/registration" element={<Register/>} />
+          {/* <Route path="/logout" element={<Profile/>} /> */}
           <Route path='/editPost/:ids/' element={<EditPost user={user}/>}/>
         </Routes>
         <Footer />

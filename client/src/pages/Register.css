@@ -1,0 +1,61 @@
+
+.Register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* background-color: #f0f0f0; */
+  }
+  
+  /* Блок формы */
+  .Register__block {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 8px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+    padding: 70px;
+    width: 400px; 
+    text-align: center;
+    /* width: 600px; */
+    text-align: center;
+  }
+  
+  /* Заголовок формы */
+  .Register__title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Контейнер для полей ввода */
+  .Register__content {
+    margin-bottom: 20px;
+  }
+  
+  /* Поля ввода */
+  .Register__input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  /* Кнопка отправки */
+  .Register__btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #909090;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .Register__btn:hover {
+    background-color: #333;
+  }
+  
